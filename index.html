@@ -12,140 +12,158 @@
   <style>
     :root{
       /* Base */
-      --bg:#0b1220;           /* deep navy */
-      --surface:#0e1628;      /* slightly lighter */
-      --text:#eaf2ff;
-      --muted:#9fb0c3;
-      --glass: linear-gradient(140deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      --bg:#0c1220;              /* deep navy */
+      --surface:#101828;         /* slightly lighter */
+      --text:#e9f0fb;
+      --muted:#a6b4c7;
+      --glass: linear-gradient(140deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
       --card-border: 1px solid rgba(255,255,255,.08);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --shadow: 0 10px 28px rgba(0,0,0,.35);
       --radius: 18px;
-      --maxw: 1180px;
-      /* Palette (fun but controlled) */
-      --cyan:#3bb6ff;
-      --teal:#6ee7f0;
-      --violet:#a98bff;
-      --green:#4ade80;
-      --amber:#fbbf24;
-      --orange:#ff7849;
-      --pink:#ff7ac8;
+      --maxw: 1100px;
+
+      /* A calmer, human gradient palette */
+      --brand-1:#7cc5ff;  /* soft sky */
+      --brand-2:#b39cff;  /* soft violet */
+      --brand-3:#7ee2c3;  /* mint */
+
+      /* Accents kept subtle */
+      --accent:#84d8ff;
+      --accent-2:#b7a6ff;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(59,182,255,.18), transparent 60%),
-        radial-gradient(900px 520px at -10% 10%, rgba(169,139,255,.14), transparent 55%),
-        radial-gradient(700px 400px at 110% 90%, rgba(255,122,200,.06), transparent 55%),
-        var(--bg);
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       color:var(--text);
-      line-height:1.6; letter-spacing:.2px;
+      line-height:1.65; letter-spacing:.15px;
+      background:
+        radial-gradient(900px 420px at 85% -10%, rgba(124,197,255,.16), transparent 60%),
+        radial-gradient(800px 420px at -10% 10%, rgba(179,156,255,.12), transparent 55%),
+        var(--bg);
     }
-    a{color:var(--cyan); text-decoration:none}
-    a:hover{opacity:.9}
+
+    /* Typography that scales with viewport */
+    h1{font-size:clamp(28px, 4.2vw, 46px); line-height:1.12; margin:0 0 8px}
+    h2.section-title{
+      font-size:clamp(22px, 3.2vw, 34px);
+      font-weight:900; margin:0 0 8px;
+      background:linear-gradient(90deg, var(--brand-1), var(--brand-2));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    .section-sub{opacity:.9; margin:0 0 24px; font-size:clamp(14px, 2.1vw, 17px)}
+
+    a{color:var(--accent); text-decoration:none}
+    a:hover{opacity:.92}
     img{max-width:100%; display:block}
-    .wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:22px}
-    .grid{display:grid; gap:22px}
+    .wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:20px}
+
+    /* Generic grid with safe gaps */
+    .grid{display:grid; gap:18px}
 
     /* Buttons */
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; border:1px solid transparent; font-weight:700; transition:.2s ease; letter-spacing:.2px}
-    .btn:hover{transform:translateY(-1px); filter:saturate(1.08)}
-    .btn.primary{background:linear-gradient(90deg, var(--cyan), var(--green)); color:#001d2c}
-    .btn.purple{background:linear-gradient(90deg, var(--violet), var(--pink)); color:#0b0120}
-    .btn.ghost{background:transparent; border-color:rgba(255,255,255,.20); color:var(--text)}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:11px 16px; border-radius:999px; border:1px solid transparent; font-weight:700; transition:.2s ease; letter-spacing:.2px; white-space:nowrap}
+    .btn:hover{transform:translateY(-1px);}
+    .btn.primary{background:#7cc5ff; color:#061624; box-shadow:0 6px 16px rgba(124,197,255,.25); border-color:rgba(124,197,255,.35)}
+    .btn.purple{background:#2b3750; color:#e9f0fb; border-color:rgba(124,197,255,.35)}
+    .btn.ghost{background:transparent; border-color:rgba(255,255,255,.22); color:var(--text)}
 
     /* Header */
-    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px); border-bottom:1px solid rgba(255,255,255,.06); background:rgba(8,12,22,.5)}
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.4px}
-    .brand i{background:linear-gradient(90deg,var(--cyan),var(--violet)); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
-    .nav .links{display:flex; gap:18px}
-    .nav .links a{padding:8px 10px; border-radius:10px; color:var(--text)}
+    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px); border-bottom:1px solid rgba(255,255,255,.06); background:rgba(8,12,22,.55)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.35px}
+    .brand i{background:linear-gradient(90deg,var(--brand-1),var(--brand-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
+    .nav .links{display:flex; gap:12px}
+    .nav .links a{padding:8px 10px; border-radius:10px; color:var(--text); font-weight:600}
     .nav .links a:hover{background:rgba(255,255,255,.06)}
 
+    /* Mobile nav squeeze */
+    @media (max-width:720px){
+      .nav{padding:10px 0}
+      .nav .links{gap:6px; overflow:auto hidden; -webkit-overflow-scrolling:touch}
+      .nav .links a{padding:8px 12px; font-size:14px}
+    }
+
+    /* Card shell */
+    .card{background:var(--glass); border:var(--card-border); border-radius:var(--radius); padding:18px}
+
     /* Hero */
-    .hero{padding:80px 0 30px; position:relative}
-    .hero .card{display:grid; grid-template-columns: 1.2fr .9fr; gap:30px; align-items:center; background:var(--glass); border:var(--card-border); border-radius:calc(var(--radius) + 6px); padding:32px; box-shadow:var(--shadow)}
-    .head-cta{display:flex; gap:12px; margin-top:16px; flex-wrap:wrap}
-    .kpis{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:18px}
-    .kpi{background:var(--glass); border:var(--card-border); border-radius:16px; padding:14px 16px}
-    .kpi .n{font-size:22px; font-weight:900}
+    .hero{padding:64px 0 26px; position:relative}
+    .hero .card{display:grid; grid-template-columns: 1.1fr .9fr; gap:22px; align-items:center}
+    .head-cta{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+    .kpis{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:14px}
+    .kpi{background:var(--glass); border:var(--card-border); border-radius:14px; padding:12px 12px}
+    .kpi .n{font-size:clamp(16px,2.5vw,22px); font-weight:900}
     .kpi .l{opacity:.85; font-size:13px}
 
-    /* Section shells */
-    section{padding:70px 0}
-    .section-title{font-size:34px; font-weight:900; margin:0 0 8px; background:linear-gradient(90deg, var(--cyan), var(--violet), var(--green), var(--amber)); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
-    .section-sub{opacity:.9; margin:0 0 26px}
-    .card{background:var(--glass); border:var(--card-border); border-radius:var(--radius); padding:22px}
+    /* Sections */
+    section{padding:64px 0}
 
     /* About */
-    .about .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .about .pill-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
     .pill{padding:6px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.14); font-size:13px; opacity:.95}
-    .pill:nth-child(4n+1){border-color:var(--violet)}
-    .pill:nth-child(4n+2){border-color:var(--green)}
-    .pill:nth-child(4n+3){border-color:var(--amber)}
-    .pill:nth-child(4n){border-color:var(--orange)}
 
-    /* Feature tiles */
+    /* Features */
     .feature-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .feature i{font-size:22px}
-    .feature:nth-child(1) i{color:var(--violet)}
-    .feature:nth-child(2) i{color:var(--green)}
-    .feature:nth-child(3) i{color:var(--orange)}
+    .feature i{font-size:22px; color:var(--accent-2)}
 
     /* Skills */
     .skills .cols{grid-template-columns: 1fr 1fr}
     .bar{height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden}
-    .bar>span{display:block; height:100%; background:linear-gradient(90deg, var(--teal), var(--cyan)); border-radius:inherit}
-    .tags{display:flex; gap:10px; flex-wrap:wrap}
+    .bar>span{display:block; height:100%; background:linear-gradient(90deg, var(--brand-3), var(--brand-1)); border-radius:inherit}
+    .tags{display:flex; gap:8px; flex-wrap:wrap}
     .tag{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14)}
-    .tag:nth-child(6n+1){border-color:var(--violet)}
-    .tag:nth-child(6n+2){border-color:var(--green)}
-    .tag:nth-child(6n+3){border-color:var(--amber)}
-    .tag:nth-child(6n+4){border-color:var(--orange)}
-    .tag:nth-child(6n+5){border-color:var(--pink)}
 
     /* Projects */
     .projects .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .project .title{font-weight:900}
-    .project:nth-child(1) .title{color:var(--violet)}
-    .project:nth-child(2) .title{color:var(--green)}
-    .project:nth-child(3) .title{color:var(--amber)}
-    .project:nth-child(4) .title{color:var(--orange)}
-    .project:nth-child(5) .title{color:var(--pink)}
-    .project:nth-child(6) .title{color:var(--cyan)}
+    .project .title{font-weight:900; color:var(--accent-2)}
 
     /* Timeline */
     .timeline{position:relative; margin-left:2px}
-    .timeline::before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(var(--cyan), var(--violet))}
-    .item{position:relative; padding-left:34px; margin:16px 0}
-    .item::before{content:""; position:absolute; left:2px; top:6px; width:18px; height:18px; border-radius:50%; background:var(--surface); border:2px solid var(--cyan)}
+    .timeline::before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(var(--brand-1), var(--brand-2))}
+    .item{position:relative; padding-left:34px; margin:14px 0}
+    .item::before{content:""; position:absolute; left:2px; top:6px; width:18px; height:18px; border-radius:50%; background:var(--surface); border:2px solid var(--brand-1)}
 
     /* Testimonials */
     .testimonials .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .testimonials blockquote{margin:0; font-size:clamp(14px,2vw,16px)}
 
     /* Contact */
     .contact-list{list-style:none; padding:0; margin:0}
-    .contact-list li{display:flex; gap:10px; align-items:center; margin:8px 0}
+    .contact-list li{display:flex; gap:10px; align-items:center; margin:8px 0; word-break:break-word}
 
     /* Footer */
-    footer{padding:42px 0 56px; border-top:1px solid rgba(255,255,255,.06); background:rgba(0,0,0,.18)}
+    footer{padding:40px 0 56px; border-top:1px solid rgba(255,255,255,.06); background:rgba(0,0,0,.18)}
 
-    /* Responsive */
-    @media (max-width: 1024px){
-      .hero .card{grid-template-columns:1fr}
+    /* RESPONSIVE REFINEMENTS */
+    @media (max-width: 1100px){
+      .wrap{padding-inline:18px}
+      .hero .card{grid-template-columns:1fr .9fr}
+    }
+
+    @media (max-width: 920px){
       .projects .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .testimonials .grid{grid-template-columns:1fr 1fr}
       .feature-grid{grid-template-columns:1fr 1fr}
     }
+
     @media (max-width: 720px){
+      section{padding:50px 0}
+      .hero{padding:56px 0 18px}
+      .hero .card{grid-template-columns:1fr}
       .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
       .skills .cols{grid-template-columns:1fr}
       .projects .grid, .feature-grid{grid-template-columns:1fr}
       .testimonials .grid{grid-template-columns:1fr}
-      .section-title{font-size:28px}
+      .btn{padding:10px 14px; font-size:14px}
+      .card{padding:16px}
     }
+
+    /* Avoid any accidental horizontal scroll on mobile */
+    body, html{overflow-x:hidden}
+    .wrap{width:100%}
   </style>
 </head>
 <body>
@@ -153,7 +171,7 @@
   <header>
     <div class="wrap nav">
       <div class="brand"><i class="fa-solid fa-shield-halved"></i> <span>Arnaud<span style="opacity:.7">.A</span></span></div>
-      <nav class="links">
+      <nav class="links" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
@@ -169,26 +187,23 @@
     <div class="wrap">
       <div class="card">
         <div>
-          <h1 style="font-size:46px; line-height:1.1; margin:0 0 8px">Hi, I'm Arnaud Azenui</h1>
-          <p style="font-size:18px; opacity:.9; margin:0 0 14px">Computer Science student (Cybersecurity concentration) at the University of North Carolina at Pembroke. I build useful, human‑centered software and love turning research insights into real products.</p>
+          <h1>Hi, I'm Arnaud Azenui</h1>
+          <p style="font-size:clamp(15px, 2.2vw, 18px); opacity:.92; margin:0 0 12px">Computer Science student (Cybersecurity concentration) at the University of North Carolina at Pembroke. I build useful, human‑centered software and love turning research insights into real products.</p>
           <div class="head-cta">
-            <!-- Replace the href below with your actual resume path (keep filename if you upload to assets/) -->
             <a class="btn primary" href="Arnaud Azenui-Resume.pdf" download><i class="fa-solid fa-arrow-down"></i> Download Résumé</a>
             <a class="btn purple" href="#projects"><i class="fa-regular fa-folder-open"></i> View Projects</a>
             <a class="btn ghost" href="#contact"><i class="fa-solid fa-paper-plane"></i> Contact</a>
           </div>
-          <div class="kpis">
-            <div class="kpi"><div class="n" style="color:var(--green)">3.96 GPA</div><div class="l">UNCP (current)</div></div>
-            <div class="kpi"><div class="n" style="color:var(--violet)">4.0 GPA</div><div class="l">ACU (transfer)</div></div>
-            <div class="kpi"><div class="n" style="color:var(--amber)">5+</div><div class="l">Major Projects</div></div>
-            <div class="kpi"><div class="n" style="color:var(--orange)">2</div><div class="l">Research Roles</div></div>
+          <div class="kpis" role="list">
+            <div class="kpi" role="listitem"><div class="n" style="color:var(--brand-3)">3.96 GPA</div><div class="l">UNCP (current)</div></div>
+            <div class="kpi" role="listitem"><div class="n" style="color:var(--brand-2)">4.0 GPA</div><div class="l">ACU (transfer)</div></div>
+            <div class="kpi" role="listitem"><div class="n" style="color:var(--accent)">5+</div><div class="l">Major Projects</div></div>
+            <div class="kpi" role="listitem"><div class="n" style="color:var(--accent-2)">2</div><div class="l">Research Roles</div></div>
           </div>
         </div>
         <div>
-          <div class="card" style="text-align:center; padding:26px; height:100%">
-            <!-- ====== PROFILE PHOTO ====== -->
-            <!-- Upload your photo to assets/ as profile.jpg (or any name) and replace the src below. -->
-            <img src="profilePhoto.jpg" alt="Arnaud profile photo" style="margin:0 auto 12px; border-radius:50%; box-shadow:var(--shadow); width:220px; height:220px; object-fit:cover">
+          <div class="card" style="text-align:center; padding:22px; height:100%">
+            <img src="profilePhoto.jpg" alt="Arnaud profile photo" style="margin:0 auto 10px; border-radius:50%; box-shadow:var(--shadow); width:min(220px, 55vw); height:min(220px, 55vw); object-fit:cover">
             <div class="about pill-row" style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap">
               <span class="pill">Cybersecurity</span>
               <span class="pill">UI/UX</span>
@@ -224,7 +239,7 @@
         </div>
       </div>
 
-      <div class="card" style="margin-top:22px">
+      <div class="card" style="margin-top:18px">
         <h3 style="margin-top:0">My Journey</h3>
         <p>After transferring from Abilene Christian University (4.0 GPA) to UNCP (current 3.96 GPA), I dove into research assistantships, UI/UX work, and program operations. I enjoy the overlap of people, product, and platform—where good systems and good design meet.</p>
         <div class="pill-row">
@@ -242,11 +257,11 @@
       <div class="grid cols" style="grid-template-columns:1fr 1fr">
         <div class="card">
           <h4 style="margin-top:0">Core Languages</h4>
-          <div style="margin:12px 0">Java <div class="bar"><span style="width:85%"></span></div></div>
-          <div style="margin:12px 0">C# / Unity <div class="bar"><span style="width:75%"></span></div></div>
-          <div style="margin:12px 0">C / C++ <div class="bar"><span style="width:70%"></span></div></div>
-          <div style="margin:12px 0">Python <div class="bar"><span style="width:65%"></span></div></div>
-          <div style="margin:12px 0">SQL (PostgreSQL, SQLite) <div class="bar"><span style="width:70%"></span></div></div>
+          <div style="margin:10px 0">Java <div class="bar"><span style="width:85%"></span></div></div>
+          <div style="margin:10px 0">C# / Unity <div class="bar"><span style="width:75%"></span></div></div>
+          <div style="margin:10px 0">C / C++ <div class="bar"><span style="width:70%"></span></div></div>
+          <div style="margin:10px 0">Python <div class="bar"><span style="width:65%"></span></div></div>
+          <div style="margin:10px 0">SQL (PostgreSQL, SQLite) <div class="bar"><span style="width:70%"></span></div></div>
         </div>
         <div class="card">
           <h4 style="margin-top:0">Platforms & Tools</h4>
@@ -357,7 +372,7 @@
             <li>UNCP Math Club — active member</li>
             <li>UNCP Peer Tutor</li>
           </ul>
-          <div style="height:14px"></div>
+          <div style="height:12px"></div>
           <h3>Strength Highlights</h3>
           <div class="tags">
             <span class="tag">Problem Solving</span>
@@ -389,8 +404,8 @@
           <p style="margin-top:10px"><strong>Related coursework:</strong> Computer Organization & Programming, Machine Learning, Artificial Intelligence.</p>
         </div>
       </div>
-      <div class="card" style="margin-top:22px">
-        <h4 style="margin:0 0 10px">Certifications & Awards</h4>
+      <div class="card" style="margin-top:18px">
+        <h4 style="margin:0 0 8px">Certifications & Awards</h4>
         <div class="tags">
           <span class="tag">Emerging Leaders — Truist Leadership Institute</span>
           <span class="tag">(Add new certs here)</span>
@@ -406,7 +421,7 @@
       <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
         <div class="card">
           <blockquote>“Arnaud demonstrates strong analytical skills and a knack for building tools people actually use.”</blockquote>
-          <div style="opacity:.75; margin-top:10px"><strong>Professor Ali Tosun-Supervisor</strong></div>
+          <div style="opacity:.75; margin-top:10px"><strong>Professor Ali Tosun—Supervisor</strong></div>
         </div>
         <div class="card">
           <blockquote>“Reliable, curious, and user‑focused. He elevates projects with thoughtful design and documentation.”</blockquote>
@@ -414,7 +429,7 @@
         </div>
         <div class="card">
           <blockquote>“A steady teammate who communicates clearly and ships on time.”</blockquote>
-          <div style="opacity:.75; margin-top:10px"><strong>Bryan Ndum-Project Collaborator</strong></div>
+          <div style="opacity:.75; margin-top:10px"><strong>Bryan Ndum—Project Collaborator</strong></div>
         </div>
       </div>
     </div>
@@ -423,7 +438,7 @@
   <!-- ======= Contact ======= -->
   <section id="contact">
     <div class="wrap">
-      <div class="card" style="display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:center">
+      <div class="card" style="display:grid; grid-template-columns:1.2fr .8fr; gap:16px; align-items:center">
         <div>
           <h2 class="section-title" style="margin:0">Let’s build something great</h2>
           <p class="section-sub">I’m open to internships, research, and product roles where design and engineering intersect.</p>
@@ -436,7 +451,6 @@
           <ul class="contact-list">
             <li><i class="fa-solid fa-location-dot"></i> Pembroke, NC</li>
             <li><i class="fa-solid fa-at"></i> arnaudchenuiazenui@gmail.com</li>
-            <!-- ====== SOCIAL LINKS ====== -->
             <li><i class="fa-brands fa-github"></i> <a href="https://github.com/Arnaud65298" aria-label="GitHub">https://github.com/Arnaud65298</a></li>
             <li><i class="fa-brands fa-linkedin"></i> <a href="http://linkedin.com/in/arnaud-chenui-azenui-324946247" aria-label="LinkedIn">http://linkedin.com/in/arnaud-chenui-azenui</a></li>
           </ul>
@@ -462,7 +476,8 @@
         const id=a.getAttribute('href');
         if(id.length>1){
           e.preventDefault();
-          document.querySelector(id).scrollIntoView({behavior:'smooth'});
+          const el=document.querySelector(id);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
         }
       });
     });
