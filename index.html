@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arnaud C. Azenui — Portfolio</title>
+  <meta name="description" content="Arnaud C. Azenui — portfolio website. Computer Science (Cybersecurity) student with UI/UX, research, and software experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root{
+      /* Base */
+      --bg:#0b1220;           /* deep navy */
+      --surface:#0e1628;      /* slightly lighter */
+      --text:#eaf2ff;
+      --muted:#9fb0c3;
+      --glass: linear-gradient(140deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      --card-border: 1px solid rgba(255,255,255,.08);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --maxw: 1180px;
+      /* Palette (fun but controlled) */
+      --cyan:#3bb6ff;
+      --teal:#6ee7f0;
+      --violet:#a98bff;
+      --green:#4ade80;
+      --amber:#fbbf24;
+      --orange:#ff7849;
+      --pink:#ff7ac8;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(59,182,255,.18), transparent 60%),
+        radial-gradient(900px 520px at -10% 10%, rgba(169,139,255,.14), transparent 55%),
+        radial-gradient(700px 400px at 110% 90%, rgba(255,122,200,.06), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6; letter-spacing:.2px;
+    }
+    a{color:var(--cyan); text-decoration:none}
+    a:hover{opacity:.9}
+    img{max-width:100%; display:block}
+    .wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:22px}
+    .grid{display:grid; gap:22px}
+
+    /* Buttons */
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; border:1px solid transparent; font-weight:700; transition:.2s ease; letter-spacing:.2px}
+    .btn:hover{transform:translateY(-1px); filter:saturate(1.08)}
+    .btn.primary{background:linear-gradient(90deg, var(--cyan), var(--green)); color:#001d2c}
+    .btn.purple{background:linear-gradient(90deg, var(--violet), var(--pink)); color:#0b0120}
+    .btn.ghost{background:transparent; border-color:rgba(255,255,255,.20); color:var(--text)}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px); border-bottom:1px solid rgba(255,255,255,.06); background:rgba(8,12,22,.5)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.4px}
+    .brand i{background:linear-gradient(90deg,var(--cyan),var(--violet)); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
+    .nav .links{display:flex; gap:18px}
+    .nav .links a{padding:8px 10px; border-radius:10px; color:var(--text)}
+    .nav .links a:hover{background:rgba(255,255,255,.06)}
+
+    /* Hero */
+    .hero{padding:80px 0 30px; position:relative}
+    .hero .card{display:grid; grid-template-columns: 1.2fr .9fr; gap:30px; align-items:center; background:var(--glass); border:var(--card-border); border-radius:calc(var(--radius) + 6px); padding:32px; box-shadow:var(--shadow)}
+    .head-cta{display:flex; gap:12px; margin-top:16px; flex-wrap:wrap}
+    .kpis{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:18px}
+    .kpi{background:var(--glass); border:var(--card-border); border-radius:16px; padding:14px 16px}
+    .kpi .n{font-size:22px; font-weight:900}
+    .kpi .l{opacity:.85; font-size:13px}
+
+    /* Section shells */
+    section{padding:70px 0}
+    .section-title{font-size:34px; font-weight:900; margin:0 0 8px; background:linear-gradient(90deg, var(--cyan), var(--violet), var(--green), var(--amber)); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
+    .section-sub{opacity:.9; margin:0 0 26px}
+    .card{background:var(--glass); border:var(--card-border); border-radius:var(--radius); padding:22px}
+
+    /* About */
+    .about .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .pill{padding:6px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.14); font-size:13px; opacity:.95}
+    .pill:nth-child(4n+1){border-color:var(--violet)}
+    .pill:nth-child(4n+2){border-color:var(--green)}
+    .pill:nth-child(4n+3){border-color:var(--amber)}
+    .pill:nth-child(4n){border-color:var(--orange)}
+
+    /* Feature tiles */
+    .feature-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .feature i{font-size:22px}
+    .feature:nth-child(1) i{color:var(--violet)}
+    .feature:nth-child(2) i{color:var(--green)}
+    .feature:nth-child(3) i{color:var(--orange)}
+
+    /* Skills */
+    .skills .cols{grid-template-columns: 1fr 1fr}
+    .bar{height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden}
+    .bar>span{display:block; height:100%; background:linear-gradient(90deg, var(--teal), var(--cyan)); border-radius:inherit}
+    .tags{display:flex; gap:10px; flex-wrap:wrap}
+    .tag{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14)}
+    .tag:nth-child(6n+1){border-color:var(--violet)}
+    .tag:nth-child(6n+2){border-color:var(--green)}
+    .tag:nth-child(6n+3){border-color:var(--amber)}
+    .tag:nth-child(6n+4){border-color:var(--orange)}
+    .tag:nth-child(6n+5){border-color:var(--pink)}
+
+    /* Projects */
+    .projects .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .project .title{font-weight:900}
+    .project:nth-child(1) .title{color:var(--violet)}
+    .project:nth-child(2) .title{color:var(--green)}
+    .project:nth-child(3) .title{color:var(--amber)}
+    .project:nth-child(4) .title{color:var(--orange)}
+    .project:nth-child(5) .title{color:var(--pink)}
+    .project:nth-child(6) .title{color:var(--cyan)}
+
+    /* Timeline */
+    .timeline{position:relative; margin-left:2px}
+    .timeline::before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(var(--cyan), var(--violet))}
+    .item{position:relative; padding-left:34px; margin:16px 0}
+    .item::before{content:""; position:absolute; left:2px; top:6px; width:18px; height:18px; border-radius:50%; background:var(--surface); border:2px solid var(--cyan)}
+
+    /* Testimonials */
+    .testimonials .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+    /* Contact */
+    .contact-list{list-style:none; padding:0; margin:0}
+    .contact-list li{display:flex; gap:10px; align-items:center; margin:8px 0}
+
+    /* Footer */
+    footer{padding:42px 0 56px; border-top:1px solid rgba(255,255,255,.06); background:rgba(0,0,0,.18)}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .hero .card{grid-template-columns:1fr}
+      .projects .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .testimonials .grid{grid-template-columns:1fr 1fr}
+      .feature-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 720px){
+      .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .skills .cols{grid-template-columns:1fr}
+      .projects .grid, .feature-grid{grid-template-columns:1fr}
+      .testimonials .grid{grid-template-columns:1fr}
+      .section-title{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <!-- ======= Header / Nav ======= -->
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><i class="fa-solid fa-shield-halved"></i> <span>Arnaud<span style="opacity:.7">.A</span></span></div>
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======= Hero ======= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="card">
+        <div>
+          <h1 style="font-size:46px; line-height:1.1; margin:0 0 8px">Hi, I'm Arnaud Azenui</h1>
+          <p style="font-size:18px; opacity:.9; margin:0 0 14px">Computer Science student (Cybersecurity concentration) at the University of North Carolina at Pembroke. I build useful, human‑centered software and love turning research insights into real products.</p>
+          <div class="head-cta">
+            <!-- Replace the href below with your actual resume path (keep filename if you upload to assets/) -->
+            <a class="btn primary" href="Arnaud Azenui-Resume.pdf" download><i class="fa-solid fa-arrow-down"></i> Download Résumé</a>
+            <a class="btn purple" href="#projects"><i class="fa-regular fa-folder-open"></i> View Projects</a>
+            <a class="btn ghost" href="#contact"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+          </div>
+          <div class="kpis">
+            <div class="kpi"><div class="n" style="color:var(--green)">3.96 GPA</div><div class="l">UNCP (current)</div></div>
+            <div class="kpi"><div class="n" style="color:var(--violet)">4.0 GPA</div><div class="l">ACU (transfer)</div></div>
+            <div class="kpi"><div class="n" style="color:var(--amber)">5+</div><div class="l">Major Projects</div></div>
+            <div class="kpi"><div class="n" style="color:var(--orange)">2</div><div class="l">Research Roles</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="text-align:center; padding:26px; height:100%">
+            <!-- ====== PROFILE PHOTO ====== -->
+            <!-- Upload your photo to assets/ as profile.jpg (or any name) and replace the src below. -->
+            <img src="profilePhoto.jpg" alt="Arnaud profile photo" style="margin:0 auto 12px; border-radius:50%; box-shadow:var(--shadow); width:220px; height:220px; object-fit:cover">
+            <div class="about pill-row" style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap">
+              <span class="pill">Cybersecurity</span>
+              <span class="pill">UI/UX</span>
+              <span class="pill">Research</span>
+              <span class="pill">Java • C# • Python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= About ======= -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-sub">I’m a builder and a collaborator. My work spans frontend prototypes, data analysis, and systems that make classrooms, programs, and teams run smoother.</p>
+      <div class="grid feature-grid">
+        <div class="card feature">
+          <i class="fa-solid fa-diagram-project"></i>
+          <h4>Product & UI/UX</h4>
+          <p>Wireframes, hi‑fi mockups, and design systems that scale. Comfortable in WordPress/Elementor and modern web stacks.</p>
+        </div>
+        <div class="card feature">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          <h4>Research & Data</h4>
+          <p>From building data collection systems to presenting insights that drive decisions and improve student success and retention.</p>
+        </div>
+        <div class="card feature">
+          <i class="fa-solid fa-shield"></i>
+          <h4>Cybersecurity Mindset</h4>
+          <p>Studying secure design patterns and fundamentals across Linux/Windows, networking, and cloud‑adjacent tooling.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:22px">
+        <h3 style="margin-top:0">My Journey</h3>
+        <p>After transferring from Abilene Christian University (4.0 GPA) to UNCP (current 3.96 GPA), I dove into research assistantships, UI/UX work, and program operations. I enjoy the overlap of people, product, and platform—where good systems and good design meet.</p>
+        <div class="pill-row">
+          <span class="pill">Algorithms</span><span class="pill">OOP / Java</span><span class="pill">Machine Learning</span><span class="pill">AI</span><span class="pill">Presentation & Communication</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Skills ======= -->
+  <section id="skills" class="skills">
+    <div class="wrap">
+      <h2 class="section-title">Technical Arsenal</h2>
+      <p class="section-sub">A compact snapshot of tools and languages I use most.</p>
+      <div class="grid cols" style="grid-template-columns:1fr 1fr">
+        <div class="card">
+          <h4 style="margin-top:0">Core Languages</h4>
+          <div style="margin:12px 0">Java <div class="bar"><span style="width:85%"></span></div></div>
+          <div style="margin:12px 0">C# / Unity <div class="bar"><span style="width:75%"></span></div></div>
+          <div style="margin:12px 0">C / C++ <div class="bar"><span style="width:70%"></span></div></div>
+          <div style="margin:12px 0">Python <div class="bar"><span style="width:65%"></span></div></div>
+          <div style="margin:12px 0">SQL (PostgreSQL, SQLite) <div class="bar"><span style="width:70%"></span></div></div>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">Platforms & Tools</h4>
+          <div class="tags">
+            <span class="tag">Linux</span>
+            <span class="tag">Windows</span>
+            <span class="tag">Unity</span>
+            <span class="tag">Eclipse</span>
+            <span class="tag">Visual Studio</span>
+            <span class="tag">CodeBlocks</span>
+            <span class="tag">MS Excel</span>
+            <span class="tag">MS Word</span>
+            <span class="tag">MS Visio</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">WordPress / Elementor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Projects ======= -->
+  <section id="projects" class="projects">
+    <div class="wrap">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-sub">Selected work across coursework, research, and self‑initiated builds.</p>
+      <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+        <article class="card project">
+          <div class="title">Unity 2‑D Game (C#)</div>
+          <p>A from‑scratch 2‑D game built in Unity with custom gameplay systems and polished feel. Focus on code architecture and UX.</p>
+          <div class="tags"><span class="tag">C#</span><span class="tag">Unity</span><span class="tag">Game Dev</span></div>
+        </article>
+        <article class="card project">
+          <div class="title">Java Desktop Calculator</div>
+          <p>GUI calculator implementing five core operations with clean, maintainable code and input validation.</p>
+          <div class="tags"><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">Swing/JavaFX</span></div>
+        </article>
+        <article class="card project">
+          <div class="title">Predictive Analytics for Student Success</div>
+          <p>Analyzed historical academic data and built models that revealed factors influencing student retention and success.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">ML</span><span class="tag">Data Science</span></div>
+        </article>
+        <article class="card project">
+          <div class="title">Interactive Sales Dashboard</div>
+          <p>Designed a Tableau dashboard to visualize sales performance, helping stakeholders track KPIs and trends in real‑time.</p>
+          <div class="tags"><span class="tag">Tableau</span><span class="tag">Data Viz</span></div>
+        </article>
+        <article class="card project">
+          <div class="title">Research Data Pipelines</div>
+          <p>Developed data collection systems and documentation to streamline analysis for research supervisors.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Automation</span></div>
+        </article>
+        <article class="card project">
+          <div class="title">UI/UX Case Studies (WordPress/Elementor)</div>
+          <p>Contributions to page building, style‑guide upkeep, and component libraries for a public‑facing education site.</p>
+          <div class="tags"><span class="tag">UI/UX</span><span class="tag">WordPress</span><span class="tag">Elementor</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Experience ======= -->
+  <section id="experience">
+    <div class="wrap">
+      <h2 class="section-title">Professional Journey</h2>
+      <p class="section-sub">Hands‑on roles where I shipped, supported, and learned.</p>
+      <div class="grid" style="grid-template-columns:1.1fr .9fr; align-items:start">
+        <div class="card">
+          <h3 style="margin-top:0">Recent Roles</h3>
+          <div class="timeline">
+            <div class="item">
+              <h4 style="margin:0">UX/UI Design Intern — The Sustainable Living Guide <span style="opacity:.7; font-weight:600">(May 2025 – Present)</span></h4>
+              <ul>
+                <li>Build and refine WordPress/Elementor pages with consistent brand identity and performance.</li>
+                <li>Conduct user research & usability testing; create wireframes and hi‑fi prototypes.</li>
+                <li>Contribute to design audits and style‑guide documentation for scalability.</li>
+              </ul>
+            </div>
+            <div class="item">
+              <h4 style="margin:0">Seasonal Program Support — Envision by WorldStrides, D.C. <span style="opacity:.7; font-weight:600">(May – Aug 2025)</span></h4>
+              <ul>
+                <li>Maintained participant databases and attendance with privacy‑aware processes.</li>
+                <li>Configured laptops, tablets, and A/V for interactive STEM and leadership sessions.</li>
+                <li>Troubleshot hardware/software, supported Zoom/hybrid components, and documented quick guides.</li>
+                <li>Collaborated with instructors to enhance simulations for 200+ participants.</li>
+              </ul>
+            </div>
+            <div class="item">
+              <h4 style="margin:0">Research Assistant — UNCP <span style="opacity:.7; font-weight:600">(Sep – Dec 2024)</span></h4>
+              <ul>
+                <li>Built databases and data collection systems improving efficiency and data quality.</li>
+                <li>Presented clear findings to supervisors to support decisions.</li>
+              </ul>
+            </div>
+            <div class="item">
+              <h4 style="margin:0">Research Assistant — ACU, Abilene TX <span style="opacity:.7; font-weight:600">(Sep – Dec 2023)</span></h4>
+              <ul>
+                <li>Modeled student success & retention; informed targeted support strategies.</li>
+                <li>Delivered predictive insights to university administrators.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <aside class="card">
+          <h3 style="margin-top:0">Leadership & Activities</h3>
+          <ul>
+            <li>Vice President — NSBE UNCP Chapter</li>
+            <li>UNCP Math Club — active member</li>
+            <li>UNCP Peer Tutor</li>
+          </ul>
+          <div style="height:14px"></div>
+          <h3>Strength Highlights</h3>
+          <div class="tags">
+            <span class="tag">Problem Solving</span>
+            <span class="tag">Systems Thinking</span>
+            <span class="tag">User Empathy</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Teamwork</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Education ======= -->
+  <section id="education">
+    <div class="wrap">
+      <h2 class="section-title">Education & Certifications</h2>
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="card">
+          <h3 style="margin:0">University of North Carolina at Pembroke</h3>
+          <div style="opacity:.9">B.S. in Computer Science — Cybersecurity concentration</div>
+          <div class="about pill-row"><span class="pill">GPA: 3.96 / 4.0</span><span class="pill">Pembroke, NC</span><span class="pill">May 2027</span></div>
+          <p style="margin-top:10px"><strong>Related coursework:</strong> Algorithms, Java Programming, Calculus, Object‑Oriented Programming, Algebra.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0">Abilene Christian University</h3>
+          <div style="opacity:.9">B.S. in Computer Science — Cybersecurity concentration</div>
+          <div class="about pill-row"><span class="pill">GPA: 4.0 / 4.0</span><span class="pill">Abilene, TX</span><span class="pill">Transferred — Dec 2024</span></div>
+          <p style="margin-top:10px"><strong>Related coursework:</strong> Computer Organization & Programming, Machine Learning, Artificial Intelligence.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:22px">
+        <h4 style="margin:0 0 10px">Certifications & Awards</h4>
+        <div class="tags">
+          <span class="tag">Emerging Leaders — Truist Leadership Institute</span>
+          <span class="tag">(Add new certs here)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Testimonials ======= -->
+  <section class="testimonials">
+    <div class="wrap">
+      <h2 class="section-title">What Others Say</h2>
+      <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+        <div class="card">
+          <blockquote>“Arnaud demonstrates strong analytical skills and a knack for building tools people actually use.”</blockquote>
+          <div style="opacity:.75; margin-top:10px"><strong>Professor Ali Tosun-Supervisor</strong></div>
+        </div>
+        <div class="card">
+          <blockquote>“Reliable, curious, and user‑focused. He elevates projects with thoughtful design and documentation.”</blockquote>
+          <div style="opacity:.75; margin-top:10px"><strong>Design Mentor</strong></div>
+        </div>
+        <div class="card">
+          <blockquote>“A steady teammate who communicates clearly and ships on time.”</blockquote>
+          <div style="opacity:.75; margin-top:10px"><strong>Bryan Ndum-Project Collaborator</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Contact ======= -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="card" style="display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:center">
+        <div>
+          <h2 class="section-title" style="margin:0">Let’s build something great</h2>
+          <p class="section-sub">I’m open to internships, research, and product roles where design and engineering intersect.</p>
+          <div class="head-cta">
+            <a class="btn primary" href="mailto:arnaudchenuiazenui@gmail.com?subject=Hello%20Arnaud"><i class="fa-solid fa-envelope"></i> Email Me</a>
+            <a class="btn ghost" href="tel:+13252838217"><i class="fa-solid fa-phone"></i> (325) 283‑8217</a>
+          </div>
+        </div>
+        <div>
+          <ul class="contact-list">
+            <li><i class="fa-solid fa-location-dot"></i> Pembroke, NC</li>
+            <li><i class="fa-solid fa-at"></i> arnaudchenuiazenui@gmail.com</li>
+            <!-- ====== SOCIAL LINKS ====== -->
+            <li><i class="fa-brands fa-github"></i> <a href="https://github.com/Arnaud65298" aria-label="GitHub">https://github.com/Arnaud65298</a></li>
+            <li><i class="fa-brands fa-linkedin"></i> <a href="http://linkedin.com/in/arnaud-chenui-azenui-324946247" aria-label="LinkedIn">http://linkedin.com/in/arnaud-chenui-azenui</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="y"></span> Arnaud C. Azenui</div>
+      <div style="opacity:.8">Built with plain HTML/CSS/JS</div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Smooth scroll for internal anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href');
+        if(id.length>1){
+          e.preventDefault();
+          document.querySelector(id).scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+
+    // Simple reveal on scroll
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.style.transform='translateY(0)'; entry.target.style.opacity='1'; }
+      });
+    },{threshold:.12});
+    document.querySelectorAll('.card, .project, section .section-title').forEach(el=>{
+      el.style.opacity='.001';
+      el.style.transform='translateY(10px)';
+      el.style.transition='opacity .6s ease, transform .6s ease';
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>
