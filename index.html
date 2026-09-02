@@ -1,499 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Arnaud C. Azenui — Portfolio</title>
-  <meta name="description" content="Arnaud C. Azenui — portfolio website. Computer Science (Cybersecurity) student with UI/UX, research, and software experience." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arnaud C. Azenui — computer science student at UNC Pembroke working on cybersecurity, network security research, and AI evaluation.">
+  <title>Arnaud C. Azenui</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    :root{
-      /* Base */
-      --bg:#0c1220;              /* deep navy */
-      --surface:#101828;         /* slightly lighter */
-      --text:#e9f0fb;
-      --muted:#a6b4c7;
-      --glass: linear-gradient(140deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      --card-border: 1px solid rgba(255,255,255,.08);
-      --shadow: 0 10px 28px rgba(0,0,0,.35);
-      --radius: 18px;
-      --maxw: 1100px;
-
-      /* A calmer, human gradient palette */
-      --brand-1:#7cc5ff;  /* soft sky */
-      --brand-2:#b39cff;  /* soft violet */
-      --brand-3:#7ee2c3;  /* mint */
-
-      /* Accents kept subtle */
-      --accent:#84d8ff;
-      --accent-2:#b7a6ff;
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      color:var(--text);
-      line-height:1.65; letter-spacing:.15px;
-      background:
-        radial-gradient(900px 420px at 85% -10%, rgba(124,197,255,.16), transparent 60%),
-        radial-gradient(800px 420px at -10% 10%, rgba(179,156,255,.12), transparent 55%),
-        var(--bg);
-    }
-
-    /* Typography that scales with viewport */
-    h1{font-size:clamp(28px, 4.2vw, 46px); line-height:1.12; margin:0 0 8px}
-    h2.section-title{
-      font-size:clamp(22px, 3.2vw, 34px);
-      font-weight:900; margin:0 0 8px;
-      background:linear-gradient(90deg, var(--brand-1), var(--brand-2));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    }
-    .section-sub{opacity:.9; margin:0 0 24px; font-size:clamp(14px, 2.1vw, 17px)}
-
-    a{color:var(--accent); text-decoration:none}
-    a:hover{opacity:.92}
-    img{max-width:100%; display:block}
-    .wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:20px}
-
-    /* Generic grid with safe gaps */
-    .grid{display:grid; gap:18px}
-
-    /* Buttons */
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:11px 16px; border-radius:999px; border:1px solid transparent; font-weight:700; transition:.2s ease; letter-spacing:.2px; white-space:nowrap}
-    .btn:hover{transform:translateY(-1px);}
-    .btn.primary{background:#7cc5ff; color:#061624; box-shadow:0 6px 16px rgba(124,197,255,.25); border-color:rgba(124,197,255,.35)}
-    .btn.purple{background:#2b3750; color:#e9f0fb; border-color:rgba(124,197,255,.35)}
-    .btn.ghost{background:transparent; border-color:rgba(255,255,255,.22); color:var(--text)}
-
-    /* Header */
-    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px); border-bottom:1px solid rgba(255,255,255,.06); background:rgba(8,12,22,.55)}
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.35px}
-    .brand i{background:linear-gradient(90deg,var(--brand-1),var(--brand-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
-    .nav .links{display:flex; gap:12px}
-    .nav .links a{padding:8px 10px; border-radius:10px; color:var(--text); font-weight:600}
-    .nav .links a:hover{background:rgba(255,255,255,.06)}
-
-    /* Mobile nav squeeze */
-    @media (max-width:720px){
-      .nav{padding:10px 0}
-      .nav .links{gap:6px; overflow:auto hidden; -webkit-overflow-scrolling:touch}
-      .nav .links a{padding:8px 12px; font-size:14px}
-    }
-
-    /* Card shell */
-    .card{background:var(--glass); border:var(--card-border); border-radius:var(--radius); padding:18px}
-
-    /* Hero */
-    .hero{padding:64px 0 26px; position:relative}
-    .hero .card{display:grid; grid-template-columns: 1.1fr .9fr; gap:22px; align-items:center}
-    .head-cta{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
-    .kpis{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-top:14px}
-    .kpi{background:var(--glass); border:var(--card-border); border-radius:14px; padding:12px 12px}
-    .kpi .n{font-size:clamp(16px,2.5vw,22px); font-weight:900}
-    .kpi .l{opacity:.85; font-size:13px}
-
-    /* Sections */
-    section{padding:64px 0}
-
-    /* About */
-    .about .pill-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-    .pill{padding:6px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.14); font-size:13px; opacity:.95}
-
-    /* Features */
-    .feature-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .feature i{font-size:22px; color:var(--accent-2)}
-
-    /* Skills */
-    .skills .cols{grid-template-columns: 1fr 1fr}
-    .bar{height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden}
-    .bar>span{display:block; height:100%; background:linear-gradient(90deg, var(--brand-3), var(--brand-1)); border-radius:inherit}
-    .tags{display:flex; gap:8px; flex-wrap:wrap}
-    .tag{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14)}
-
-    /* Projects */
-    .projects .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .project .title{font-weight:900; color:var(--accent-2)}
-
-    /* Timeline */
-    .timeline{position:relative; margin-left:2px}
-    .timeline::before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(var(--brand-1), var(--brand-2))}
-    .item{position:relative; padding-left:34px; margin:14px 0}
-    .item::before{content:""; position:absolute; left:2px; top:6px; width:18px; height:18px; border-radius:50%; background:var(--surface); border:2px solid var(--brand-1)}
-
-    /* Testimonials */
-    .testimonials .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .testimonials blockquote{margin:0; font-size:clamp(14px,2vw,16px)}
-
-    /* Contact */
-    .contact-list{list-style:none; padding:0; margin:0}
-    .contact-list li{display:flex; gap:10px; align-items:center; margin:8px 0; word-break:break-word}
-
-    /* Footer */
-    footer{padding:40px 0 56px; border-top:1px solid rgba(255,255,255,.06); background:rgba(0,0,0,.18)}
-
-    /* RESPONSIVE REFINEMENTS */
-    @media (max-width: 1100px){
-      .wrap{padding-inline:18px}
-      .hero .card{grid-template-columns:1fr .9fr}
-    }
-
-    @media (max-width: 920px){
-      .projects .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .testimonials .grid{grid-template-columns:1fr 1fr}
-      .feature-grid{grid-template-columns:1fr 1fr}
-    }
-
-    @media (max-width: 720px){
-      section{padding:50px 0}
-      .hero{padding:56px 0 18px}
-      .hero .card{grid-template-columns:1fr}
-      .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .skills .cols{grid-template-columns:1fr}
-      .projects .grid, .feature-grid{grid-template-columns:1fr}
-      .testimonials .grid{grid-template-columns:1fr}
-      .btn{padding:10px 14px; font-size:14px}
-      .card{padding:16px}
-    }
-
-    /* Avoid any accidental horizontal scroll on mobile */
-    body, html{overflow-x:hidden}
-    .wrap{width:100%}
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- ======= Header / Nav ======= -->
-  <header>
-    <div class="wrap nav">
-      <div class="brand"><i class="fa-solid fa-shield-halved"></i> <span>Arnaud<span style="opacity:.7">.A</span></span></div>
-      <nav class="links" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
+
+  <header class="masthead">
+    <nav class="container nav" aria-label="Primary">
+      <a class="wordmark" href="#top">Arnaud&nbsp;Azenui</a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
         <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </header>
 
-  <!-- ======= Hero ======= -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="card">
+  <main id="top">
+
+    <section class="intro container">
+      <p class="kicker">Pembroke, North Carolina</p>
+      <h1>Computer science student working on security, networks, and how we evaluate AI.</h1>
+      <p class="intro-copy">
+        I'm Arnaud — a junior at the University of North Carolina at Pembroke studying computer
+        science with a concentration in cybersecurity. Right now I split my time between
+        network-security research on campus and building benchmark tasks that test how well
+        frontier AI agents actually work. I also co-founded
+        <a href="#afrosecured">Afrosecured</a>, a platform that helps people spot malicious
+        websites before they get burned.
+      </p>
+      <p class="intro-meta">
+        B.S. Computer Science, UNC Pembroke · expected May 2027 · GPA 3.97<br>
+        ISC2 Certified in Cybersecurity (CC)
+      </p>
+      <div class="intro-actions">
+        <a class="button" href="assets/Arnaud_Azenui_Resume.pdf">Résumé (PDF)</a>
+        <a class="text-link" href="https://www.linkedin.com/in/arnaud-azenui" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="text-link" href="https://github.com/ArnaudAzenui" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </section>
+
+    <section id="work" class="section container">
+      <h2>Work</h2>
+
+      <article class="entry">
+        <div class="entry-when">Nov 2025 — present</div>
+        <div class="entry-body">
+          <h3>AI Research Trainer, Handshake AI</h3>
+          <p class="entry-sub">Benchmark task author &amp; reviewer, Project Dynamo · remote</p>
+          <p>
+            I write Dockerized agentic-coding benchmark tasks (Terminal-Bench&nbsp;2 / Harbor) used to
+            evaluate frontier LLM agents — fourteen and counting, across ML infrastructure,
+            evaluation, data engineering, SQL, bioinformatics, and software engineering. Each task
+            ships with a deterministic verifier and seeded data generators, with reproducibility
+            enforced through SHA-256 input pinning and regeneration tests, then validated by
+            pass@2 through pass@8 agent trials on CI.
+          </p>
+          <p>
+            I also peer-review other contributors' work: 59 tasks across 61 review rounds so far,
+            which meant digging through roughly 180 CI artifact bundles and 530 agent trial
+            trajectories to issue evidence-backed accept, revise, or reject verdicts.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-when">Sept 2025 — present</div>
+        <div class="entry-body">
+          <h3>Research Assistant, UNC Pembroke</h3>
+          <p class="entry-sub">Network security &amp; SDN governance</p>
+          <p>
+            I research secure network architectures and compliance monitoring in software-defined
+            networking environments — collecting and analyzing flow-level network data to catch
+            abnormal traffic patterns and potential vulnerabilities, and writing the audit-ready
+            documentation that goes with it.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section id="projects" class="section container">
+      <h2>Projects</h2>
+
+      <article class="entry" id="afrosecured">
+        <div class="entry-when">2025 — present</div>
+        <div class="entry-body">
+          <h3>Afrosecured</h3>
+          <p class="entry-sub">Co-founder · React, Python, ML, Chrome extension, threat-intel APIs</p>
+          <p>
+            A cybersecurity platform that tells you whether a website is malicious or likely to be,
+            by combining live threat-intelligence lookups with an ML classifier trained on URL and
+            page-content features. We shipped a web app plus a browser extension that flags
+            suspicious sites in real time, built for the people phishing campaigns target most.
+            Afrosecured was selected as a Top&nbsp;100 semi-finalist in the 2025 CEO Global Pitch
+            Competition and advanced through the national semi-final round.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-when">2025 — 2026</div>
+        <div class="entry-body">
+          <h3>LLM Agent Benchmark Suite</h3>
+          <p class="entry-sub">Python, Docker, GitHub Actions, Harbor / Terminal-Bench 2, SQL</p>
+          <p>
+            A suite of evaluation tasks built to probe silent-failure reasoning in AI agents —
+            off-policy evaluation, judge-bias correction, bitemporal SQL valuation, genome-to-protein
+            translation — each with a deterministic verifier and validated through pass@k agent trials.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-when">2025</div>
+        <div class="entry-body">
+          <h3>SDN Network Security Testbed</h3>
+          <p class="entry-sub">Python, OpenFlow, Mininet</p>
+          <p>
+            A smart-grid security testbed for detecting abnormal traffic and simulated attacks in
+            software-defined networking environments, built as part of my research work at UNCP.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-when">2025</div>
+        <div class="entry-body">
+          <h3>Unmask AI</h3>
+          <p class="entry-sub">JavaScript, Python, ML APIs</p>
+          <p>
+            A media-authentication platform that helps tell real media apart from AI-generated
+            media, deployed as a full-stack app.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section id="about" class="section container">
+      <h2>About</h2>
+      <div class="about-grid">
         <div>
-          <h1>Hi, I'm Arnaud Azenui</h1>
-          <p style="font-size:clamp(15px, 2.2vw, 18px); opacity:.92; margin:0 0 12px">Computer Science student (Cybersecurity concentration) at the University of North Carolina at Pembroke. I build useful, human‑centered software and love turning research insights into real products.</p>
-          <div class="head-cta">
-            <a class="btn primary" href="Arnaud Azenui-Resume.pdf" download><i class="fa-solid fa-arrow-down"></i> Download Résumé</a>
-            <a class="btn purple" href="#projects"><i class="fa-regular fa-folder-open"></i> View Projects</a>
-            <a class="btn ghost" href="#contact"><i class="fa-solid fa-paper-plane"></i> Contact</a>
-          </div>
-          <div class="kpis" role="list">
-            <div class="kpi" role="listitem"><div class="n" style="color:var(--brand-3)">3.96 GPA</div><div class="l">UNCP (current)</div></div>
-            <div class="kpi" role="listitem"><div class="n" style="color:var(--brand-2)">4.0 GPA</div><div class="l">ACU (transfer)</div></div>
-            <div class="kpi" role="listitem"><div class="n" style="color:var(--accent)">5+</div><div class="l">Major Projects</div></div>
-            <div class="kpi" role="listitem"><div class="n" style="color:var(--accent-2)">2</div><div class="l">Research Roles</div></div>
-          </div>
+          <p>
+            I started my degree at Abilene Christian University in Texas (where I kept a 4.00
+            before transferring in December 2023) and continued at UNC Pembroke, where I'm
+            expected to graduate in May 2027. Outside of coursework and research, I serve as
+            vice president of our NSBE chapter, where I help run professional development
+            programming for forty-plus members, and I'm part of the UNCP Math Club.
+          </p>
+          <p>
+            The thread through everything I do is trust in systems — whether that's a network
+            that shouldn't leak, a website that shouldn't fool anyone, or an AI agent whose
+            failures shouldn't go unnoticed.
+          </p>
         </div>
-        <div>
-          <div class="card" style="text-align:center; padding:22px; height:100%">
-            <img src="profilePhoto.jpg" alt="Arnaud profile photo" style="margin:0 auto 10px; border-radius:50%; box-shadow:var(--shadow); width:min(220px, 55vw); height:min(220px, 55vw); object-fit:cover">
-            <div class="about pill-row" style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap">
-              <span class="pill">Cybersecurity</span>
-              <span class="pill">UI/UX</span>
-              <span class="pill">Research</span>
-              <span class="pill">Java • C# • Python</span>
-            </div>
-          </div>
+        <div class="skills">
+          <h3>Tools I use</h3>
+          <dl>
+            <dt>Programming</dt>
+            <dd>Python, Java, C++, JavaScript, SQL, HTML/CSS, Git, Docker, Bash, pytest, GitHub Actions</dd>
+            <dt>Security &amp; networking</dt>
+            <dd>Wireshark, Nmap, Metasploit, SDN architectures, threat-intel APIs, network flow analysis, vulnerability assessment</dd>
+            <dt>AI &amp; data</dt>
+            <dd>LLM agent evaluation &amp; benchmarking, pass@k analysis, ML classification, NumPy/Pandas, MySQL, Tableau</dd>
+            <dt>Systems</dt>
+            <dd>Linux (Ubuntu, Kali), Windows 10/11, device imaging, Microsoft 365, ServiceNow</dd>
+          </dl>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ======= About ======= -->
-  <section id="about" class="about">
-    <div class="wrap">
-      <h2 class="section-title">About Me</h2>
-      <p class="section-sub">I’m a builder and a collaborator. My work spans frontend prototypes, data analysis, and systems that make classrooms, programs, and teams run smoother.</p>
-      <div class="grid feature-grid">
-        <div class="card feature">
-          <i class="fa-solid fa-diagram-project"></i>
-          <h4>Product & UI/UX</h4>
-          <p>Wireframes, hi‑fi mockups, and design systems that scale. Comfortable in WordPress/Elementor and modern web stacks.</p>
-        </div>
-        <div class="card feature">
-          <i class="fa-solid fa-magnifying-glass-chart"></i>
-          <h4>Research & Data</h4>
-          <p>From building data collection systems to presenting insights that drive decisions and improve student success and retention.</p>
-        </div>
-        <div class="card feature">
-          <i class="fa-solid fa-shield"></i>
-          <h4>Cybersecurity Mindset</h4>
-          <p>Studying secure design patterns and fundamentals across Linux/Windows, networking, and cloud‑adjacent tooling.</p>
-        </div>
-      </div>
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <p class="contact-copy">
+        I'm open to conversations about security research, software engineering, AI evaluation,
+        and internship opportunities. The fastest way to reach me is email.
+      </p>
+      <p class="contact-links">
+        <a href="mailto:arnaudchenuiazenui@gmail.com">arnaudchenuiazenui@gmail.com</a><br>
+        <a href="https://www.linkedin.com/in/arnaud-azenui" target="_blank" rel="noreferrer">linkedin.com/in/arnaud-azenui</a><br>
+        <a href="https://github.com/ArnaudAzenui" target="_blank" rel="noreferrer">github.com/ArnaudAzenui</a>
+      </p>
+    </section>
 
-      <div class="card" style="margin-top:18px">
-        <h3 style="margin-top:0">My Journey</h3>
-        <p>After transferring from Abilene Christian University (4.0 GPA) to UNCP (current 3.96 GPA), I dove into research assistantships, UI/UX work, and program operations. I enjoy the overlap of people, product, and platform—where good systems and good design meet.</p>
-        <div class="pill-row">
-          <span class="pill">Algorithms</span><span class="pill">OOP / Java</span><span class="pill">Machine Learning</span><span class="pill">AI</span><span class="pill">Presentation & Communication</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
 
-  <!-- ======= Skills ======= -->
-  <section id="skills" class="skills">
-    <div class="wrap">
-      <h2 class="section-title">Technical Arsenal</h2>
-      <p class="section-sub">A compact snapshot of tools and languages I use most.</p>
-      <div class="grid cols" style="grid-template-columns:1fr 1fr">
-        <div class="card">
-          <h4 style="margin-top:0">Core Languages</h4>
-          <div style="margin:10px 0">Java <div class="bar"><span style="width:85%"></span></div></div>
-          <div style="margin:10px 0">C# / Unity <div class="bar"><span style="width:75%"></span></div></div>
-          <div style="margin:10px 0">C / C++ <div class="bar"><span style="width:70%"></span></div></div>
-          <div style="margin:10px 0">Python <div class="bar"><span style="width:65%"></span></div></div>
-          <div style="margin:10px 0">SQL (PostgreSQL, SQLite) <div class="bar"><span style="width:70%"></span></div></div>
-        </div>
-        <div class="card">
-          <h4 style="margin-top:0">Platforms & Tools</h4>
-          <div class="tags">
-            <span class="tag">Linux</span>
-            <span class="tag">Windows</span>
-            <span class="tag">Unity</span>
-            <span class="tag">Eclipse</span>
-            <span class="tag">Visual Studio</span>
-            <span class="tag">CodeBlocks</span>
-            <span class="tag">MS Excel</span>
-            <span class="tag">MS Word</span>
-            <span class="tag">MS Visio</span>
-            <span class="tag">Tableau</span>
-            <span class="tag">WordPress / Elementor</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= Projects ======= -->
-  <section id="projects" class="projects">
-    <div class="wrap">
-      <h2 class="section-title">Featured Projects</h2>
-      <p class="section-sub">Selected work across coursework, research, and self‑initiated builds.</p>
-      <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
-        <article class="card project">
-          <div class="title">Unity 2‑D Game (C#)</div>
-          <p>A from‑scratch 2‑D game built in Unity with custom gameplay systems and polished feel. Focus on code architecture and UX.</p>
-          <div class="tags"><span class="tag">C#</span><span class="tag">Unity</span><span class="tag">Game Dev</span></div>
-        </article>
-        <article class="card project">
-          <div class="title">Java Desktop Calculator</div>
-          <p>GUI calculator implementing five core operations with clean, maintainable code and input validation.</p>
-          <div class="tags"><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">Swing/JavaFX</span></div>
-        </article>
-        <article class="card project">
-          <div class="title">Predictive Analytics for Student Success</div>
-          <p>Analyzed historical academic data and built models that revealed factors influencing student retention and success.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">ML</span><span class="tag">Data Science</span></div>
-        </article>
-        <article class="card project">
-          <div class="title">Interactive Sales Dashboard</div>
-          <p>Designed a Tableau dashboard to visualize sales performance, helping stakeholders track KPIs and trends in real‑time.</p>
-          <div class="tags"><span class="tag">Tableau</span><span class="tag">Data Viz</span></div>
-        </article>
-        <article class="card project">
-          <div class="title">Research Data Pipelines</div>
-          <p>Developed data collection systems and documentation to streamline analysis for research supervisors.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Automation</span></div>
-        </article>
-        <article class="card project">
-          <div class="title">UI/UX Case Studies (WordPress/Elementor)</div>
-          <p>Contributions to page building, style‑guide upkeep, and component libraries for a public‑facing education site.</p>
-          <div class="tags"><span class="tag">UI/UX</span><span class="tag">WordPress</span><span class="tag">Elementor</span></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= Experience ======= -->
-  <section id="experience">
-    <div class="wrap">
-      <h2 class="section-title">Professional Journey</h2>
-      <p class="section-sub">Hands‑on roles where I shipped, supported, and learned.</p>
-      <div class="grid" style="grid-template-columns:1.1fr .9fr; align-items:start">
-        <div class="card">
-          <h3 style="margin-top:0">Recent Roles</h3>
-          <div class="timeline">
-            <div class="item">
-              <h4 style="margin:0">UX/UI Design Intern — The Sustainable Living Guide <span style="opacity:.7; font-weight:600">(May 2025 – Present)</span></h4>
-              <ul>
-                <li>Build and refine WordPress/Elementor pages with consistent brand identity and performance.</li>
-                <li>Conduct user research & usability testing; create wireframes and hi‑fi prototypes.</li>
-                <li>Contribute to design audits and style‑guide documentation for scalability.</li>
-              </ul>
-            </div>
-            <div class="item">
-              <h4 style="margin:0">Seasonal Program Support — Envision by WorldStrides, D.C. <span style="opacity:.7; font-weight:600">(May – Aug 2025)</span></h4>
-              <ul>
-                <li>Maintained participant databases and attendance with privacy‑aware processes.</li>
-                <li>Configured laptops, tablets, and A/V for interactive STEM and leadership sessions.</li>
-                <li>Troubleshot hardware/software, supported Zoom/hybrid components, and documented quick guides.</li>
-                <li>Collaborated with instructors to enhance simulations for 200+ participants.</li>
-              </ul>
-            </div>
-            <div class="item">
-              <h4 style="margin:0">Research Assistant — UNCP <span style="opacity:.7; font-weight:600">(Sep – Dec 2024)</span></h4>
-              <ul>
-                <li>Built databases and data collection systems improving efficiency and data quality.</li>
-                <li>Presented clear findings to supervisors to support decisions.</li>
-              </ul>
-            </div>
-            <div class="item">
-              <h4 style="margin:0">Research Assistant — ACU, Abilene TX <span style="opacity:.7; font-weight:600">(Sep – Dec 2023)</span></h4>
-              <ul>
-                <li>Modeled student success & retention; informed targeted support strategies.</li>
-                <li>Delivered predictive insights to university administrators.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <aside class="card">
-          <h3 style="margin-top:0">Leadership & Activities</h3>
-          <ul>
-            <li>Vice President — NSBE UNCP Chapter</li>
-            <li>UNCP Math Club — active member</li>
-            <li>UNCP Peer Tutor</li>
-          </ul>
-          <div style="height:12px"></div>
-          <h3>Strength Highlights</h3>
-          <div class="tags">
-            <span class="tag">Problem Solving</span>
-            <span class="tag">Systems Thinking</span>
-            <span class="tag">User Empathy</span>
-            <span class="tag">Communication</span>
-            <span class="tag">Teamwork</span>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= Education ======= -->
-  <section id="education">
-    <div class="wrap">
-      <h2 class="section-title">Education & Certifications</h2>
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <div class="card">
-          <h3 style="margin:0">University of North Carolina at Pembroke</h3>
-          <div style="opacity:.9">B.S. in Computer Science — Cybersecurity concentration</div>
-          <div class="about pill-row"><span class="pill">GPA: 3.96 / 4.0</span><span class="pill">Pembroke, NC</span><span class="pill">May 2027</span></div>
-          <p style="margin-top:10px"><strong>Related coursework:</strong> Algorithms, Java Programming, Calculus, Object‑Oriented Programming, Algebra.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin:0">Abilene Christian University</h3>
-          <div style="opacity:.9">B.S. in Computer Science — Cybersecurity concentration</div>
-          <div class="about pill-row"><span class="pill">GPA: 4.0 / 4.0</span><span class="pill">Abilene, TX</span><span class="pill">Transferred — Dec 2024</span></div>
-          <p style="margin-top:10px"><strong>Related coursework:</strong> Computer Organization & Programming, Machine Learning, Artificial Intelligence.</p>
-        </div>
-      </div>
-      <div class="card" style="margin-top:18px">
-        <h4 style="margin:0 0 8px">Certifications & Awards</h4>
-        <div class="tags">
-          <span class="tag">Emerging Leaders — Truist Leadership Institute</span>
-          <span class="tag">(Add new certs here)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= Testimonials ======= -->
-  <section class="testimonials">
-    <div class="wrap">
-      <h2 class="section-title">What Others Say</h2>
-      <div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
-        <div class="card">
-          <blockquote>“Arnaud demonstrates strong analytical skills and a knack for building tools people actually use.”</blockquote>
-          <div style="opacity:.75; margin-top:10px"><strong>Professor Ali Tosun—Supervisor</strong></div>
-        </div>
-        <div class="card">
-          <blockquote>“Reliable, curious, and user‑focused. He elevates projects with thoughtful design and documentation.”</blockquote>
-          <div style="opacity:.75; margin-top:10px"><strong>Design Mentor</strong></div>
-        </div>
-        <div class="card">
-          <blockquote>“A steady teammate who communicates clearly and ships on time.”</blockquote>
-          <div style="opacity:.75; margin-top:10px"><strong>Bryan Ndum—Project Collaborator</strong></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= Contact ======= -->
-  <section id="contact">
-    <div class="wrap">
-      <div class="card" style="display:grid; grid-template-columns:1.2fr .8fr; gap:16px; align-items:center">
-        <div>
-          <h2 class="section-title" style="margin:0">Let’s build something great</h2>
-          <p class="section-sub">I’m open to internships, research, and product roles where design and engineering intersect.</p>
-          <div class="head-cta">
-            <a class="btn primary" href="mailto:arnaudchenuiazenui@gmail.com?subject=Hello%20Arnaud"><i class="fa-solid fa-envelope"></i> Email Me</a>
-            <a class="btn ghost" href="tel:+13252838217"><i class="fa-solid fa-phone"></i> (325) 283‑8217</a>
-          </div>
-        </div>
-        <div>
-          <ul class="contact-list">
-            <li><i class="fa-solid fa-location-dot"></i> Pembroke, NC</li>
-            <li><i class="fa-solid fa-at"></i> arnaudchenuiazenui@gmail.com</li>
-            <li><i class="fa-brands fa-github"></i> <a href="https://github.com/Arnaud65298" aria-label="GitHub">https://github.com/Arnaud65298</a></li>
-            <li><i class="fa-brands fa-linkedin"></i> <a href="http://linkedin.com/in/arnaud-chenui-azenui-324946247" aria-label="LinkedIn">http://linkedin.com/in/arnaud-chenui-azenui</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-      <div>© <span id="y"></span> Arnaud C. Azenui</div>
-      <div style="opacity:.8">Built with plain HTML/CSS/JS</div>
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="year">2026</span> Arnaud C. Azenui</span>
+      <span>Pembroke, NC</span>
     </div>
   </footer>
 
-  <script>
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Smooth scroll for internal anchors
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id=a.getAttribute('href');
-        if(id.length>1){
-          e.preventDefault();
-          const el=document.querySelector(id);
-          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-        }
-      });
-    });
-
-    // Simple reveal on scroll
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){ entry.target.style.transform='translateY(0)'; entry.target.style.opacity='1'; }
-      });
-    },{threshold:.12});
-    document.querySelectorAll('.card, .project, section .section-title').forEach(el=>{
-      el.style.opacity='.001';
-      el.style.transform='translateY(10px)';
-      el.style.transition='opacity .6s ease, transform .6s ease';
-      obs.observe(el);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
