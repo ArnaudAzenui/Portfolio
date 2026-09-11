@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Arnaud C. Azenui — computer science student at UNC Pembroke working on cybersecurity, network security research, and AI evaluation.">
+  <meta name="description" content="Arnaud C. Azenui — computer science student at UNC Pembroke working on cybersecurity, network security research, and evaluation of frontier AI coding agents.">
   <title>Arnaud C. Azenui</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,14 +32,15 @@
       <p class="intro-copy">
         I'm Arnaud, a junior at the University of North Carolina at Pembroke studying computer
         science with a concentration in cybersecurity. Right now I split my time between
-        network-security research on campus and building benchmark tasks that test how well
-        frontier AI agents actually work. I also co-founded
-        <a href="#afrosecured">Afrosecured</a>, a platform that helps people spot malicious
-        websites before they get burned.
+        network-security research on campus, tutoring other computer science students, and
+        building the benchmark tasks that test how well frontier AI coding agents actually work.
+        I also co-founded <a href="#afrosecured">Afrosecured</a>, a platform that helps people
+        spot malicious websites before they get burned, and helped build
+        <a href="#unmask-ai">Unmask&nbsp;AI</a>, which tells real photos apart from generated ones.
       </p>
       <p class="intro-meta">
-        B.S. Computer Science, UNC Pembroke · expected May 2027 · GPA 3.97<br>
-        ISC2 Certified in Cybersecurity (CC)
+        B.S. Computer Science, UNC Pembroke · expected May 2027 · GPA 3.97 · Chancellor's List, four consecutive terms<br>
+        ISC2 Certified in Cybersecurity (CC) · English &amp; French
       </p>
       <div class="intro-actions">
         <a class="button" href="assets/Arnaud_Azenui_Resume.pdf">Résumé (PDF)</a>
@@ -54,20 +55,30 @@
       <article class="entry reveal">
         <div class="entry-when">Nov 2025 — present</div>
         <div class="entry-body">
-          <h3>AI Research Trainer, Handshake AI</h3>
-          <p class="entry-sub">Benchmark task author &amp; reviewer, Project Dynamo · remote</p>
+          <h3>Software Engineer, AI Benchmark Author &amp; Reviewer, Handshake AI</h3>
+          <p class="entry-sub">Projects Dynamo &amp; Jet · frontier-model evaluation · remote</p>
           <p>
-            I write Dockerized agentic-coding benchmark tasks (Terminal-Bench&nbsp;2 / Harbor) used to
-            evaluate frontier LLM agents. So far that's fourteen and counting, spanning ML
-            infrastructure, evaluation, data engineering, SQL, bioinformatics, and software
-            engineering. Each task ships with a deterministic verifier and seeded data generators,
-            with reproducibility enforced through SHA-256 input pinning and regeneration tests,
-            then validated by pass@2 through pass@8 agent trials on CI.
+            I build and review benchmark evaluations that measure frontier AI coding agents across
+            several concurrent programs. On Project Dynamo I write Dockerized agentic-coding tasks
+            (Terminal-Bench&nbsp;2 / Harbor): fourteen and counting, spanning ML infrastructure,
+            off-policy evaluation, judge-bias correction, data engineering, SQL, and bioinformatics.
+            Each ships with a deterministic verifier and seeded data generators, with reproducibility
+            enforced through SHA-256 input pinning, and difficulty is calibrated as a statistic rather
+            than an intuition: repeated pass@k agent trials on GitHub Actions, iterated across versions
+            until solve rates sit inside a target band.
           </p>
           <p>
-            I also peer-review other contributors' work: 59 tasks across 61 review rounds so far,
-            which meant digging through roughly 180 CI artifact bundles and 530 agent trial
-            trajectories to issue evidence-backed accept, revise, or reject verdicts.
+            On Project Jet I turn real defects in open-source projects such as pdf.js, plotly.js, and
+            seaborn into tasks, pairing behavioral fail-to-pass tests with up to 700+ pass-to-pass
+            regression controls, all validated by an oracle/no-op reward loop in sealed CI.
+          </p>
+          <p>
+            I'm also the final reviewer before tasks ship: 59 evidence-backed verdicts across 61 review
+            rounds and 14 technical domains, each reproduced by rebuilding the container and re-running
+            verification. To keep that tractable I wrote a reusable Python tool for triaging CI artifacts,
+            and I've used it on roughly 530 agent trials and 180 CI bundles to separate genuine failures
+            from harness, timeout, and dependency faults. The review playbooks and shared rubric our
+            distributed team works from are mine as well.
           </p>
         </div>
       </article>
@@ -78,10 +89,42 @@
           <h3>Research Assistant, UNC Pembroke</h3>
           <p class="entry-sub">Network security &amp; SDN governance</p>
           <p>
-            I research secure network architectures and compliance monitoring in software-defined
-            networking environments. Day to day, that means collecting and analyzing flow-level
-            network data to catch abnormal traffic patterns and potential vulnerabilities, and
-            writing the audit-ready documentation that goes with it.
+            I research secure architectures, governance frameworks, and compliance monitoring for
+            software-defined and self-driving networks. I built an OpenFlow/Mininet smart-grid testbed
+            that generates labelled abnormal-traffic and simulated-attack scenarios, and day to day I
+            collect time-series network telemetry, engineer temporal features from raw flow records to
+            surface anomalous traffic and candidate vulnerabilities, and write the structured,
+            audit-ready findings that go with it. A manuscript on security and governance monitoring
+            for SDN environments is in preparation.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="entry-when">Aug 2026 — present</div>
+        <div class="entry-body">
+          <h3>Peer Tutor, Computer Science, UNC Pembroke</h3>
+          <p class="entry-sub">Student tutor program</p>
+          <p>
+            I tutor students one-to-one and in small groups across the computer science curriculum.
+            The job is mostly finding where an explanation broke down rather than repeating it louder,
+            and I coordinate with faculty and other tutors so guidance stays consistent from one
+            session to the next.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="entry-when">Jan 2026 — present</div>
+        <div class="entry-body">
+          <h3>Help Desk Support Technician, UNCP Division of IT</h3>
+          <p class="entry-sub">Walk-in, phone, and email support · Tier 2 escalation</p>
+          <p>
+            First point of contact for students, faculty, and staff with hardware, software, and
+            connectivity problems. I handle account provisioning, device imaging, and classroom A/V
+            setup, and document each escalation so whoever picks it up next has what they need.
+            It's good practice at explaining technical problems to non-technical people clearly,
+            under time pressure.
           </p>
         </div>
       </article>
@@ -90,25 +133,26 @@
         <div class="entry-when">Summer 2025</div>
         <div class="entry-body">
           <h3>Seasonal Program Support, Envision by WorldStrides</h3>
-          <p class="entry-sub">Washington, D.C.</p>
+          <p class="entry-sub">Georgetown University, Washington, D.C.</p>
           <p>
-            During university-based summer programs in D.C., I supported participant operations
-            and the technology behind them: attendance systems, audiovisual setups, and handling
-            of privacy-sensitive participant information, plus the escalation workflows for when
-            things went sideways.
+            During a high-intensity residential summer program I coordinated logistics and first-line
+            IT support for 100+ participants: attendance systems, audiovisual setups, handling of
+            privacy-sensitive participant information, and the escalation workflows for when things
+            went sideways. Every incident that summer was closed with none left unresolved.
           </p>
         </div>
       </article>
 
       <article class="entry reveal">
-        <div class="entry-when">2025</div>
+        <div class="entry-when">May — Sept 2024</div>
         <div class="entry-body">
           <h3>UX/UI Design Intern, The Sustainable Living Guide</h3>
-          <p class="entry-sub">Figma, WordPress, Elementor</p>
+          <p class="entry-sub">Figma, WordPress, Elementor · remote</p>
           <p>
-            I created wireframes and design improvements for the site with particular attention to
-            accessibility and responsive layouts. It's where I learned that good design work is
-            mostly listening.
+            I developed interactive wireframes and high-fidelity mockups aligned with stakeholder
+            goals and user needs, and ran design audits whose reports improved documentation
+            consistency, accessibility, and privacy compliance across the site. It's where I learned
+            that good design work is mostly listening.
           </p>
         </div>
       </article>
@@ -129,6 +173,7 @@
     <section id="projects" class="section container">
       <h2>Projects</h2>
 
+      <div class="projects-grid">
       <article class="entry reveal" id="afrosecured">
         <div class="entry-when">2025 — present</div>
         <div class="entry-body">
@@ -145,6 +190,24 @@
         </div>
       </article>
 
+      <article class="entry reveal" id="unmask-ai">
+        <div class="entry-when">2025 — 2026</div>
+        <div class="entry-body">
+          <h3>Unmask AI</h3>
+          <p class="entry-sub">HackUNCP 2026 · Next.js, React, Python, ML APIs · <a href="https://unmask-ai-rho.vercel.app/" target="_blank" rel="noreferrer">unmask-ai-rho.vercel.app</a></p>
+          <p>
+            A deployed media-authentication platform that tells real photographs apart from
+            AI-generated images. Upload a JPG, PNG, or WEBP and it runs three detection layers in
+            parallel: metadata analysis of EXIF data, camera signatures, and timestamps; forensic
+            inspection with error-level analysis and noise-pattern modeling; and an ensemble of
+            trained neural classifiers that each score the image independently. The result is a
+            0–100 risk score with a confidence rating and a per-signal breakdown, returned in under a
+            second, no account required.
+            <a href="https://unmask-ai-rho.vercel.app/" target="_blank" rel="noreferrer">Try it live.</a>
+          </p>
+        </div>
+      </article>
+
       <article class="entry reveal">
         <div class="entry-when">2025 — 2026</div>
         <div class="entry-body">
@@ -154,7 +217,8 @@
             A suite of evaluation tasks built to probe silent-failure reasoning in AI agents:
             off-policy evaluation, judge-bias correction, bitemporal SQL valuation, and
             genome-to-protein translation, each with a deterministic verifier and validated
-            through pass@k agent trials.
+            through pass@k agent trials. Alongside it, a Python CI-artifact triage tool that
+            classifies failed trials by root cause.
           </p>
         </div>
       </article>
@@ -167,21 +231,36 @@
           <p>
             A smart-grid security testbed for detecting abnormal traffic and simulated attacks in
             software-defined networking environments, built as part of my research work at UNCP.
+            It produces labelled traffic scenarios that feed the anomaly-detection side of the project.
           </p>
         </div>
       </article>
 
       <article class="entry reveal">
-        <div class="entry-when">2025</div>
+        <div class="entry-when">2024</div>
         <div class="entry-body">
-          <h3>Unmask AI</h3>
-          <p class="entry-sub">JavaScript, Python, ML APIs</p>
+          <h3>AI-Powered Data Quality Agent</h3>
+          <p class="entry-sub">Python, FastAPI, Pydantic</p>
           <p>
-            A media-authentication platform that helps tell real media apart from AI-generated
-            media, deployed as a full-stack app.
+            An automated validation pipeline that audits 100K+ records for missing fields, type
+            errors, and inconsistent values, with the results surfaced on a real-time
+            error-reporting dashboard so problems get caught before they propagate downstream.
           </p>
         </div>
       </article>
+
+      <article class="entry reveal">
+        <div class="entry-when">2024</div>
+        <div class="entry-body">
+          <h3>Address &amp; Location Data Enrichment Service</h3>
+          <p class="entry-sub">Python, REST APIs, Docker</p>
+          <p>
+            A containerized geocoding and data-normalization microservice. I designed its REST API
+            and wired it to upstream providers for live ingestion and enrichment of address data.
+          </p>
+        </div>
+      </article>
+      </div>
     </section>
 
     <section id="about" class="section container">
@@ -200,18 +279,33 @@
             leak, a website that shouldn't fool anyone, an AI agent whose failures shouldn't
             go unnoticed.
           </p>
+          <div class="skills">
+            <h3>Education</h3>
+            <dl>
+              <dt>UNC Pembroke · expected May 2027</dt>
+              <dd>B.S. Computer Science, Cybersecurity concentration · GPA 3.97 · Chancellor's List, four consecutive terms. Coursework in data structures &amp; algorithms, operating systems, programming languages, networking, systems administration, securing self-driving networks, probability &amp; statistics, discrete structures, linear algebra, and calculus I–III.</dd>
+              <dt>Abilene Christian University · through Dec 2023</dt>
+              <dd>Computer science coursework including machine learning, artificial intelligence, and computer organization &amp; programming · GPA 4.00 before transferring.</dd>
+              <dt>Certification</dt>
+              <dd>ISC2 Certified in Cybersecurity (CC), valid July 2026 – June 2029.</dd>
+              <dt>Recognition</dt>
+              <dd>Top 100 semi-finalist, 2025 CEO Global Pitch Competition (Afrosecured) · HackUNCP 2026 (Unmask AI) · Chancellor's List, four consecutive terms.</dd>
+            </dl>
+          </div>
         </div>
         <div class="skills reveal">
           <h3>Tools I use</h3>
           <dl>
             <dt>Programming</dt>
-            <dd>Python, Java, C++, JavaScript, SQL, HTML/CSS, Git, Docker, Bash, pytest, GitHub Actions</dd>
-            <dt>Security &amp; networking</dt>
-            <dd>Wireshark, Nmap, Metasploit, SDN architectures, threat-intel APIs, network flow analysis, vulnerability assessment</dd>
+            <dd>Python (primary), Java, C++, JavaScript, SQL, Bash, HTML/CSS — object-oriented design, data structures &amp; algorithms, relational schema design</dd>
+            <dt>Services &amp; infrastructure</dt>
+            <dd>REST API design, FastAPI, Pydantic, Docker, Linux, Git &amp; GitHub Actions (CI/CD), pytest &amp; automated regression testing, MySQL</dd>
             <dt>AI &amp; data</dt>
-            <dd>LLM agent evaluation &amp; benchmarking, pass@k analysis, ML classification, NumPy/Pandas, MySQL, Tableau</dd>
-            <dt>Systems</dt>
-            <dd>Linux (Ubuntu, Kali), Windows 10/11, device imaging, Microsoft 365, ServiceNow</dd>
+            <dd>Agentic coding workflows end to end, LLM/agent evaluation &amp; benchmarking, pass@k analysis, deterministic verification of AI-generated changes, PyTorch, scikit-learn, NumPy/pandas, time-series analysis, cross-validation &amp; error analysis, Tableau</dd>
+            <dt>Security &amp; networking</dt>
+            <dd>Wireshark, Nmap, Metasploit, OpenFlow/Mininet, SDN architectures, threat-intel APIs, network flow analysis, vulnerability assessment</dd>
+            <dt>Design &amp; systems</dt>
+            <dd>Figma, WordPress/Elementor, accessibility &amp; design audits, Linux (Ubuntu, Kali), Windows 10/11, device imaging, Microsoft 365, ServiceNow</dd>
           </dl>
         </div>
       </div>
@@ -221,7 +315,7 @@
       <h2>Contact</h2>
       <p class="contact-copy">
         I'm open to conversations about security research, software engineering, AI evaluation,
-        and internship opportunities. The fastest way to reach me is email.
+        and internship or early-career opportunities. The fastest way to reach me is email.
       </p>
       <p class="contact-links">
         <a href="mailto:arnaudchenuiazenui@gmail.com">arnaudchenuiazenui@gmail.com</a><br>
