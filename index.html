@@ -174,6 +174,32 @@
       <h2>Projects</h2>
 
       <div class="projects-grid">
+      <article class="entry reveal" id="worth-the-fee">
+        <div class="entry-when">2026</div>
+        <div class="entry-body">
+          <h3>Worth the Fee? Barça Transfer Value</h3>
+          <p class="entry-sub">Python, pandas, statsmodels, Jupyter, Playwright, Vercel · <a href="https://barca-transfer-value.vercel.app/" target="_blank" rel="noreferrer">barca-transfer-value.vercel.app</a></p>
+          <p>
+            A statistical ledger of all 59 transfer fees FC Barcelona paid from 2010/11 to 2025/26,
+            built to answer one question: was each fee worth it? I scored every season each player
+            spent at the club against others in his role, priced it with a market-value regression
+            trained on 7,600 La Liga seasons, and weighed it against the football-inflation-adjusted
+            fee and resale value, then ran the same code for Real Madrid and Atlético. The verdict:
+            24 good deals, 22 fair, 10 bad, and Barça getting back €0.41 per euro spent against
+            Atlético's €0.66.
+          </p>
+          <p>
+            The pipeline rebuilds every verdict from 1.9 million appearance records with one command;
+            a second builds the interactive dashboard, with a money-basis switch, position filters,
+            accent-insensitive search, and a per-player scorecard. I built it with Claude as a pair
+            analyst: I set the questions, rules, and standard of evidence, and challenged results
+            against what I knew about the football, which is how a silently dropped season in the
+            source data got caught.
+            <a href="https://barca-transfer-value.vercel.app/" target="_blank" rel="noreferrer">Explore the ledger.</a>
+          </p>
+        </div>
+      </article>
+
       <article class="entry reveal" id="afrosecured">
         <div class="entry-when">2025 — present</div>
         <div class="entry-body">
@@ -300,9 +326,9 @@
             <dt>Programming</dt>
             <dd>Python (primary), Java, C++, JavaScript, SQL, Bash, HTML/CSS — object-oriented design, data structures &amp; algorithms, relational schema design</dd>
             <dt>Services &amp; infrastructure</dt>
-            <dd>REST API design, FastAPI, Pydantic, Docker, Linux, Git &amp; GitHub Actions (CI/CD), pytest &amp; automated regression testing, MySQL</dd>
+            <dd>REST API design, FastAPI, Pydantic, Docker, Linux, Git &amp; GitHub Actions (CI/CD), pytest &amp; Playwright testing, Vercel, MySQL</dd>
             <dt>AI &amp; data</dt>
-            <dd>Agentic coding workflows end to end, LLM/agent evaluation &amp; benchmarking, pass@k analysis, deterministic verification of AI-generated changes, PyTorch, scikit-learn, NumPy/pandas, time-series analysis, cross-validation &amp; error analysis, Tableau</dd>
+            <dd>Agentic coding workflows end to end, LLM/agent evaluation &amp; benchmarking, pass@k analysis, deterministic verification of AI-generated changes, PyTorch, scikit-learn, statsmodels, NumPy/pandas, Jupyter, time-series analysis, regression &amp; uncertainty estimation, cross-validation &amp; error analysis, Tableau</dd>
             <dt>Security &amp; networking</dt>
             <dd>Wireshark, Nmap, Metasploit, OpenFlow/Mininet, SDN architectures, threat-intel APIs, network flow analysis, vulnerability assessment</dd>
             <dt>Design &amp; systems</dt>
